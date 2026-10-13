@@ -1,13 +1,11 @@
 **简体中文** · [English](README.en.md)
 
 # 方块主义 BLOCKISM
-
 > 一款致敬《Thomas Was Alone》的构成主义 2D 平台跳跃游戏。极简几何、锐利棱角、红黑纸三色,用 Godot 4.7 / GDScript 搭起来。
 
 仓库名 `blockism`(原 `geometric-construct`)。游戏原名《几何构成 / Geometric Construct》。
 
 ## 这是什么
-
 《方块主义 BLOCKISM》是一款单人为主、附带双人竞速的 2D 平台跳跃游戏。玩家在名册中的几何体之间切换,每个几何体只有一个主动词——速度、弹性、置换。16 个战役关卡分四幕推进,另配一个新手教程关与一个双人竞速专关。
 
 - 引擎:Godot 4.7(标准版)/ GDScript 2.0
@@ -16,7 +14,6 @@
 - 美术:全程序化绘制(`_draw` 配方 + 少量 `canvas_item` shader),取色只经 `data/palette.tres`
 
 ## 美术方向
-
 极简主义 + 构成主义 + 几何 + 锐利:
 
 - 禁圆角、禁渐变、禁柔影
@@ -26,7 +23,6 @@
 色板(`data/palette.tres`):`ink #101216`、`paper #EDEAE0`、`red #E0492F`、`yellow #E8B33A`、`blue #4E86D8`、`orange #E07E2E`;另有机关语义槽 `buff #4E9E58`(增益 / 安全)与 `cool #45B0BE`(冷环境)。
 
 ## 四个几何体
-
 设计上有四个几何体,属性标尺 0.0–2.0,重量关系为 黄 > 红 > 橙 > 蓝。当前名册实装三个(橙球已在开发中退役)。
 
 | 名 | 形 | 特性 | 重量 |
@@ -39,7 +35,6 @@
 > 名称沿革:疾 / 簧 / 坠 / 转 → 疾 / 跃 / 逆 / 圆 → 红 / 黄 / 蓝(三体定册)。圆形与第五体(双体三角形)先后清退,现名册为三个几何体。
 
 ## 机制
-
 机关(源码 slug):
 
 - 加速门 `speed_gate` —— 门内冲刺上限提升
@@ -54,7 +49,6 @@
 另有世界道具:提示牌 `hint_marker`、出生标记 `spawn_marker`。
 
 ## 幕与关卡
-
 四幕,每幕 4 关,共 16 个战役关卡;另有新手教程关、双人竞速专关、以及开发用门禁探针关。
 
 | 幕 | 题 | 主题色 | 关卡目录 |
@@ -69,7 +63,6 @@
 音乐 `data/music/`:prologue + act1–4 共五条音轨。背景 `data/backdrop/`:act1–4 + menu。
 
 ## 操作
-
 | 动作 | 键盘 | 手柄 | 触屏 |
 |---|---|---|---|
 | 移动 | A / D、← / → | 左摇杆 / 十字键 | 左下轮盘(轻推慢走、拉满加速) |
@@ -85,7 +78,6 @@
 界面导航:主菜单 `1–4` 选剧目,`K` 键位指南、`C` 档案几何、`S` 设置、`Esc` 退出;`Enter` / `空格` 确认,`Esc` 返回(手柄 A 确认、B 返回)。触屏全部界面均有可点按的按钮 / 页签,无键盘依赖。轮盘布局可在设置面板切换「固定 / 浮动」。
 
 ## 运行
-
 前置:Godot 4.7(标准版)。下面命令中的 `godot` 请替换为你的 Godot 4.7 可执行文件。
 
 ```bash
@@ -102,7 +94,6 @@ godot --headless --path . res://tests/native_check.tscn
 > 注意:项目在 `project.godot` 中注册了自动加载 `_mcp_game_helper` → `res://addons/godot_ai/runtime/game_helper.gd`。该插件是本地 AI / MCP 辅助工具,**未纳入版本库**(见 `.gitignore` 的「第三方插件」段)。新克隆需自行补装该插件,或先删除该自动加载行,游戏才能正常启动。
 
 ## 项目结构
-
 ```
 addons/editor_kit/     第一方编辑器插件(机关坞)
 assets/
@@ -128,7 +119,6 @@ project.godot  export_presets.cfg  icon.png  CHANGELOG.md
 ```
 
 ## 编辑器插件
-
 `addons/editor_kit` —— 随库发布的第一方 Godot 编辑器插件(`@tool EditorPlugin`):
 
 - 停靠面板:机关摆放表(`dock_panel.gd` + `placement_table.gd`)
@@ -139,14 +129,12 @@ project.godot  export_presets.cfg  icon.png  CHANGELOG.md
 另:`addons/godot_ai` 是本地 AI / MCP 辅助插件(自动加载 `_mcp_game_helper`),仅供开发使用,未纳入版本库,也不随游戏发行。
 
 ## 测试与门禁
-
 仓库**没有 CI 流水线**(无 `.github/` 工作流)。质量门禁是一组可无头运行的 Godot 场景,以文本断言输出、退出码为准:
 
 - `tests/`:`flow_check`(过关链)、`native_check`(逐关装载)、`stats_check`、`focus_check`、`trait_check`、`ambience_check`、`transition_check`、`replay_transition_check`、`mech_resonance`、`tutorial_check`,以及截图工具 `shot_all` / `win_shot`
 - `tools/`:关卡审计、门位审计、热路径审计、键位对账、图集物理检查、字体覆盖检查、瓦片 / 品牌图标生成、废物清理等
 
 ## 已知限制
-
 - 名册为三个几何体;设计上的第四个「橙球 · 转」已退役。
 - 游戏标题在 `project.godot` / `scripts/core/version.gd` 中仍为「几何构成 / GEOMETRIC CONSTRUCT」;本仓库正在更名为 `blockism`(《方块主义 BLOCKISM》)。
 - 同屏双人 / 竞速的分区操作需要键鼠或双手柄;触屏设备不支持同屏双人。
@@ -156,7 +144,6 @@ project.godot  export_presets.cfg  icon.png  CHANGELOG.md
 - 仓库根目录没有 `LICENSE` 文件(见下)。
 
 ## 许可证
-
 仓库根目录没有 `LICENSE` 文件,因此默认「保留所有权利」(all rights reserved),除非仓库所有者另行声明。
 
 随库字体 `assets/fonts/NotoSansSC-VF.ttf`(Noto Sans SC Variable)按 **SIL Open Font License 1.1** 授权,详见 `assets/fonts/LICENSE.txt`。
