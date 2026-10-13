@@ -1,13 +1,11 @@
 [中文](README.md) · **English**
 
 # BLOCKISM
-
 > A constructivist 2D platformer and a homage to *Thomas Was Alone*. Minimal geometry, sharp edges, a red/black/paper palette — built in Godot 4.7 / GDScript.
 
 Repo name `blockism` (formerly `geometric-construct`). The game was previously titled 《几何构成 / Geometric Construct》.
 
 ## What it is
-
 BLOCKISM is a single-player-first 2D platformer with an optional two-player race mode. The player switches between the geometries on the roster, each defined by a single verb — speed, elasticity, or inversion. The 16 campaign levels unfold across four acts, with a tutorial level and a dedicated two-player race level.
 
 - Engine: Godot 4.7 (standard) / GDScript 2.0
@@ -16,7 +14,6 @@ BLOCKISM is a single-player-first 2D platformer with an optional two-player race
 - Art: fully procedural (`_draw` recipes plus a few `canvas_item` shaders), colours sourced only through `data/palette.tres`
 
 ## Art direction
-
 Minimalism + constructivism + geometry + sharp edges:
 
 - No rounded corners, no gradients, no soft shadows
@@ -26,7 +23,6 @@ Minimalism + constructivism + geometry + sharp edges:
 Palette (`data/palette.tres`): `ink #101216`, `paper #EDEAE0`, `red #E0492F`, `yellow #E8B33A`, `blue #4E86D8`, `orange #E07E2E`, plus the mechanism semantic slots `buff #4E9E58` (buff / safety) and `cool #45B0BE` (cold environment).
 
 ## The four geometries
-
 The design calls for four geometries on an attribute scale of 0.0–2.0, with a weight order of yellow > red > orange > blue. The current roster ships three (the orange ball was retired during development).
 
 | Name | Shape | Trait | Weight |
@@ -39,7 +35,6 @@ The design calls for four geometries on an attribute scale of 0.0–2.0, with a 
 > Naming history: 疾 / 簧 / 坠 / 转 → 疾 / 跃 / 逆 / 圆 → 红 / 黄 / 蓝 (roster fixed at three). The circle and a fifth geometry (a dual-body triangle) were retired in turn; the roster now holds three geometries.
 
 ## Mechanics
-
 Mechanisms (source slugs):
 
 - Speed gate `speed_gate` — raises the sprint cap while inside
@@ -54,7 +49,6 @@ Mechanisms (source slugs):
 World props also include hint markers `hint_marker` and spawn markers `spawn_marker`.
 
 ## Acts and levels
-
 Four acts, four levels each — 16 campaign levels in total — plus a tutorial level, a two-player race level, and a developer gate-probe level.
 
 | Act | Title | Theme colour | Level folder |
@@ -69,7 +63,6 @@ Four acts, four levels each — 16 campaign levels in total — plus a tutorial 
 Music in `data/music/`: prologue + act1–4 (five tracks). Backdrops in `data/backdrop/`: act1–4 + menu.
 
 ## Controls
-
 | Action | Keyboard | Gamepad | Touch |
 |---|---|---|---|
 | Move | A / D, ← / → | left stick / D-pad | bottom-left wheel pad (nudge to walk, push fully to accelerate) |
@@ -85,7 +78,6 @@ Music in `data/music/`: prologue + act1–4 (five tracks). Backdrops in `data/ba
 Interface navigation: main menu `1–4` to pick an act, `K` for the key guide, `C` for the geometry archive, `S` for settings, `Esc` to quit; `Enter` / `Space` to confirm, `Esc` to go back (gamepad A confirms, B goes back). Every touch screen has tappable buttons / tabs, with no keyboard dependency. The wheel-pad layout can be switched between "fixed" and "floating" in the settings panel.
 
 ## How to run
-
 Prerequisite: Godot 4.7 (standard). Replace `godot` below with your Godot 4.7 executable.
 
 ```bash
@@ -102,7 +94,6 @@ godot --headless --path . res://tests/native_check.tscn
 > Note: `project.godot` registers the autoload `_mcp_game_helper` → `res://addons/godot_ai/runtime/game_helper.gd`. That addon is a local AI / MCP helper and is **not tracked in the repository** (see the third-party-plugin section of `.gitignore`). A fresh clone must install that addon separately, or remove that autoload line, before the game will start.
 
 ## Project structure
-
 ```
 addons/editor_kit/     first-party editor plugin (mechanism dock)
 assets/
@@ -128,7 +119,6 @@ project.godot  export_presets.cfg  icon.png  CHANGELOG.md
 ```
 
 ## Editor addon
-
 `addons/editor_kit` — a first-party Godot editor plugin (`@tool EditorPlugin`) shipped with the repo:
 
 - A dock panel: the mechanism placement table (`dock_panel.gd` + `placement_table.gd`)
@@ -139,14 +129,12 @@ The project registers and enables it in `project.godot`.
 Separately: `addons/godot_ai` is a local AI / MCP helper addon (the `_mcp_game_helper` autoload). It is for development only, is not tracked in the repository, and does not ship with the game.
 
 ## Testing and gates
-
 There is **no CI pipeline** in the repo (no `.github/` workflows). Quality gates are a set of headless Godot scenes judged by their text assertions and exit code:
 
 - `tests/`: `flow_check` (level-completion chain), `native_check` (per-level load), `stats_check`, `focus_check`, `trait_check`, `ambience_check`, `transition_check`, `replay_transition_check`, `mech_resonance`, `tutorial_check`, plus the screenshot tools `shot_all` / `win_shot`
 - `tools/`: level audit, door-placement audit, hot-path audit, keybind reconciliation, tile-data physics check, font-coverage check, tile / brand-icon generation, waste cleanup, and more
 
 ## Known limitations
-
 - The roster is three geometries; the designed fourth, the orange ball 转, was retired.
 - The game title in `project.godot` / `scripts/core/version.gd` is still 《几何构成 / GEOMETRIC CONSTRUCT》; the repo is being renamed to `blockism` (BLOCKISM).
 - Same-screen two-player / race mode needs a keyboard or gamepads; touch devices cannot do same-screen two-player.
@@ -156,7 +144,6 @@ There is **no CI pipeline** in the repo (no `.github/` workflows). Quality gates
 - There is no `LICENSE` file at the repo root (see below).
 
 ## Licence
-
 There is no `LICENSE` file at the repository root, so all rights are reserved by default unless the repository owner states otherwise.
 
 The bundled font `assets/fonts/NotoSansSC-VF.ttf` (Noto Sans SC Variable) is licensed under the **SIL Open Font License 1.1**; see `assets/fonts/LICENSE.txt`.
